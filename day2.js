@@ -1,63 +1,56 @@
-// synchronous :- it is request blocks the client until operation is complete.browser is unresponsive.
-function fun1(){
-    console.log(" hello ")
-}
-function fun(){
-    console.log("synchronous java script")
-    fun1();
-    console.log( "this is ending")
-}
-fun();
-//.....................................................................
 
-//Asynchronous :- it doesnot block the client request.
-function show(){
-    console.log(" Asynchronus java script")
-    setTimeout(() => {
-       console.log("after 3 seconds") 
-    }, 3000);
-}
-function display(){
-    console.log("learn java script")
-    show();
-    console.log("i learn java script")
-}
-display();
-// callback :- any function that is passed as an argument is called a call back function 
-// example 1.
-function f1(friend,callback){
-    console.log(`i am busy with ${friend} . i will call you later`)
-    callback();
-}
-function f2(){
-    console.log(" hi how r u ")
-}
-f1("mohita",f2);
-//example 2
-var a;
-var b;
-var c;
-function sum(a , b , callback){
-     c = a+b;
-    console.log("sum of numbers ")
-    callback();
-}
-function display(){
-    console.log(c)
-}
-sum(10 , 20 ,display);
-//example 3
-function sayname(name,callback){
-    
-    console.log(`hello ${name}. ....` )
-    setTimeout(() => {
-        console.log(" after 3 sec")
-        callback();
-    }, 3000);
-    console.log(" how r u")
-}
-function greet(){
-    console.log( `i am fine .how r u ` )
+//..............................................................
+//promise:- promise is used to handle asychronous operations in java script . there are three stages og java script 1. pending 2. resolved 3. reject.
+//example 1.
+// function display(argument) {
+//    console.log(argument)
+//   }
+  
+//   let promise = new Promise(function(resolve, reject) {
+//     let x = 0;
+//      if (x == 0) {
+//       resolve("OK");
+//     } else {
+//       reject("Error");
+//     }
+//   });
+  
+//   promise.then(
+//     function(value) {display(value);},
+//     function(error) {display(error);}
+//   );
+  //example2
+//    var xyz= new Promise(function(resolve,reject){
+//     let a = 10;
+//     let b = 20;
+//     let c = a+b;
+//     if(c==30){
+//         resolve("correct answer")
+//     }
+//     else{
+//         reject("wrong answer")
+//     }
 
-}
-sayname("mohita",greet);
+
+//   })
+//   xyz.then((message)=>{
+//     console.log(message)
+// })
+// xyz.catch((meaage)=> {
+//     console.log(message)
+// })
+//example3 
+var promise = new Promise((resolve,reject)=>{
+    setTimeout(() => {
+        let rollnum= [1,2,3,4,5];
+        resolve(rollnum);
+        reject("no rollnum");
+    }, 2000);
+
+})
+promise.then((mesage)=>{
+    console.log("rollnumber is exist")
+})
+promise.catch((mesage)=>{
+    console.log(" rollnumber not exist")
+})
